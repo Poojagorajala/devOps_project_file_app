@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building the application...'
-                    sh 'echo Build step running'  // Replace with actual build command (e.g., npm install)
+                    sh 'echo Build step running'  // Replace with actual build command (e.g., mvn clean package)
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     echo 'Running tests...'
-                    sh 'echo Running test cases'  // Replace with actual test command (e.g., npm test)
+                    sh 'echo Running test cases'  // Replace with actual test command (e.g., mvn test)
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying application...'
-                    sh 'echo Deployment step running'  // Replace with actual deployment command
+                    sh 'echo Deployment step running'  // Replace with actual deployment command (e.g., kubectl apply -f deployment.yaml)
                 }
             }
         }
@@ -48,4 +48,3 @@ pipeline {
         }
     }
 }
-
