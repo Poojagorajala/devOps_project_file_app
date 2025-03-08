@@ -1,25 +1,51 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Poojagorajala/devOps_project_file_app.git'
+                script {
+                    echo 'Cloning repository...'
+                    checkout scm
+                }
             }
         }
+
         stage('Build') {
             steps {
-                echo 'Building the application...'
+                script {
+                    echo 'Building the application...'
+                    sh 'echo Build step running'  // Replace with actual build command (e.g., npm install)
+                }
             }
         }
+
         stage('Test') {
             steps {
-                echo 'Running tests...'
+                script {
+                    echo 'Running tests...'
+                    sh 'echo Running test cases'  // Replace with actual test command (e.g., npm test)
+                }
             }
         }
+
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
+                script {
+                    echo 'Deploying application...'
+                    sh 'echo Deployment step running'  // Replace with actual deployment command
+                }
             }
         }
     }
+
+    post {
+        success {
+            echo '✅ Build completed successfully!'
+        }
+        failure {
+            echo '❌ Build failed! Check logs for errors.'
+        }
+    }
 }
+
